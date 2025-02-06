@@ -1,0 +1,153 @@
+.body{
+    background-color: #f0f0f0;
+}
+
+.transition,
+.transform,
+.animation{
+    border: 1px solid #000;
+    margin: 1rem 0;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+}
+
+.b1{
+    background-color: #f00;
+}
+.b2{
+    background-color: #0f0;
+}
+.b3{
+    background-color: #00f;
+}
+.b4{
+    background-color: #ff0;
+}
+
+
+/* vs transition */
+
+.transition .b1{
+    transition: width 1000ms ease-in-out 0.5s;
+}
+
+.transition .b1:hover{
+    width: 400px;
+}
+
+.transition .b2{
+    transition: height 1000ms ease-in-out 0.5s, width 1000ms ease-in-out 0.5s;
+}
+.transition .b2:hover{
+    height: 400px;
+    width: 400px;
+    background-color: #f0f0f0;
+}
+
+.transition .b3{
+    transition: all 1000ms ease-in-out 0.5s;
+}
+
+.transition .b3:hover{
+    background-color: black;
+    border-radius: 50%;
+}
+
+/* css transform */
+
+.transform .box{
+    transition: all 1000ms ease-in-out 0.5s;
+}
+
+.transform .b1{
+    transform-origin: bottom right;
+}
+.transform .b1:hover{
+    transform: rotate(45deg);
+}
+
+
+.transform .b2:hover{
+    transform: translate(20px,30px);
+}
+
+.transform .b3:hover{
+    transform: scale(1.5);
+}
+
+.transform .b4{
+    transform: skew(30deg, 30deg);
+}
+
+.transform .b4:hover{
+    transform: skew(0, 0);
+}
+
+/* css animation */
+
+@keyframes changeColor{
+    from{
+        background-color: #00f;
+    }
+    to{
+
+        background-color: #00f;
+    }
+}
+
+.animation .b1{
+    animation-name: changeColor;
+    animation-duration: 1000ms;
+    animation-delay: 2s;
+    animation-fill-mode: both;
+}
+
+@keyframes moveAround{
+    0%{
+        transform: translate(0, 0);
+    }
+    25%{
+        transform: translate(200px, 0);
+    }
+    50%{
+        transform: translate(200px, 200px);
+    }
+    75%{
+        transform: translate(0, 200px);
+    }
+    100%{
+        transform: translate(0, 0);
+    }
+}
+
+.animation .b2{
+    animation: moveAround 4s;
+    animation-delay: 2s;
+    animation-iteration-count: 5;
+    animation-direction: alternate;
+}
+
+@keyframes multipleTransformations{
+    0%{
+        transform: scale(0.5) translate(0);
+    }
+    0%{
+        transform: scale(1.4) translate(500px);   
+    }
+}
+
+.animation .b3{
+    animation: multipleTransformations 2s cubic-bezier(.21,.77,.72,.24) 3s 12 alternate;
+}
+
+.animation .b3:active{
+    animation-play-state: paused;
+    -o-animation-play-state: ;
+}
+
+
+
+
